@@ -14,3 +14,12 @@ Tercer comando:
 Si quieres agregar una linea de codigo en la migración:
 -php artisan migrate:fresh
 
+Cuarto comando:
+Se agrega los modelos:
+php artisan make:model Post
+php artisan make:model Category
+php artisan make:model Tag
+php artisan make:model PostTag
+php artisan make:model PostCategory
+php artisan make:model Media
+

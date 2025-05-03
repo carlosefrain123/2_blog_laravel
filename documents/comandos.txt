@@ -38,4 +38,9 @@ php artisan make:factory CategoryFactory
 php artisan make:factory TagFactory
 php artisan make:factory MediaFactory
 
+Septimo Comando: Para ejecutar los seed
+php artisan migrate --seed
+Y luego
+php artisan migrate:fresh --seed
+
 

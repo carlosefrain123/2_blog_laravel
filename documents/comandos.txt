@@ -32,4 +32,10 @@ php artisan make:controller PostTagController
 php artisan make:controller PostCategoryController
 php artisan make:controller MediaController
 
+Sexto comando, tenemos que crear los factories para la prueba:
+php artisan make:factory PostFactory
+php artisan make:factory CategoryFactory
+php artisan make:factory TagFactory
+php artisan make:factory MediaFactory
+
 

@@ -1,0 +1,11 @@
+Primer comando:
+composer create-project --prefer-dist laravel/laravel b_blog_laravel
+
+Segundo comando:
+php artisan make:migration create_users_table
+php artisan make:migration create_posts_table
+php artisan make:migration create_categories_table
+php artisan make:migration create_tags_table
+php artisan make:migration create_post_tags_table
+php artisan make:migration create_post_categories_table
+php artisan make:migration create_media_table

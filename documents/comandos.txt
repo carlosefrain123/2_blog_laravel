@@ -43,4 +43,7 @@ php artisan migrate --seed
 Y luego
 php artisan migrate:fresh --seed
 
+Octavo comando: Se ejecuta de nuevo el:
+php artisan migrate:fresh --seed
+
 

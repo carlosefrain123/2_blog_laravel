@@ -9,12 +9,12 @@ class PostController extends Controller
 {
     public function index(){
         // Obtener los últimos 4 posts ordenados por fecha de publicación
-        $posts = Post::with(['user', 'categories'])->latest('published_at')->take(4)->get();
+        $latestPosts = Post::with(['user', 'categories'])->latest('published_at')->take(4)->get();
 
         // Obtener todos los posts paginados (9 por página)
-        /* $allPosts = Post::with(['user', 'categories'])->latest('published_at')->paginate(9); */
+        $allPosts = Post::with(['user', 'categories'])->latest('published_at')->paginate(9);
 
         // Pasar los posts a la vista
-        return view('welcome', compact('posts'));
+        return view('welcome', compact('latestPosts', 'allPosts'));
     }
 }

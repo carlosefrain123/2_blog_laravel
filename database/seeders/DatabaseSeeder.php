@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
         $categories = \App\Models\Category::factory(5)->create();
 
         // Crear 5 tags
+        
         $tags = \App\Models\Tag::factory(5)->create();
 
         // Crear 50 posts

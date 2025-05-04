@@ -17,195 +17,84 @@
     <main class="main">
         <!--slider-two-->
         <div class="slider slider--two">
-            <div  class="swiper slider__top">
+            <div class="swiper slider__top">
                 <div class="swiper-wrapper">
-                    <!--slider1-->
-                    <div class="slider__item  swiper-slide" style="background-image: url(assets/img/blog/1.jpg);">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-xl-7 col-lg-9 col-md-12">
-                                    <div class="slider__item-content ">
-                                        <a href="blog-grid.html" class="category">food</a>
-                                        <h1 class="slider__title">
-                                            <a href="post-default.html" class="slider__title-link">7 Holiday Decor Ideas and Exactly What I Love About Each One</a>
-                                        </h1>
-
-
-                                        <p class="slider__exerpt">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Explicabo, harum eligendi. Ab obcaecati ratione facere ut minus illo sequi rerum!</p>
-
-
-                                    <ul class="slider__meta list-inline">
-                                        <li class="slider__meta-item">
-                                            <a href="author.html" class="slider__meta-link">
-                                                <img src="assets/img/author/1.jpg" alt="" class="slider__meta-img">
-                                            </a>
-                                        </li>
-                                        <li class="slider__meta-item "><a href="author.html" class="slider__meta-link">David Smith</a>
-                                        </li>
-                                        <li class="slider__meta-item">  <span class="dot"></span> February 10, 2024</li>
-                                        <li class="slider__meta-item"> <span class="dot"></span> 15 min Read</li>
-                                        <li class="slider__meta-item"> <span class="dot"></span> 2 comments</li>
-                                    </ul>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--slider2-->
-                    <div class="slider__item  swiper-slide" style="background-image: url(assets/img/blog/2.jpg);">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-xl-7 col-lg-9 col-md-12">
-                                    <div class="slider__item-content ">
-                                        <a href="blog-grid.html" class="category">food</a>
-                                        <h1 class="slider__title">
-                                            <a href="post-default.html" class="slider__title-link">5 Effective Ways I’m Finding Focus in a Busy Season of Life</a>
-                                        </h1>
-                                        <p class="slider__exerpt">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Explicabo, harum eligendi. Ab obcaecati ratione facere ut minus illo sequi rerum!</p>
-                                        <ul class="slider__meta list-inline">
-                                            <li class="slider__meta-item">
-                                                <a href="author.html" class="slider__meta-link">
-                                                    <img src="assets/img/author/1.jpg" alt="" class="slider__meta-img">
+                    @foreach($posts as $post)
+                        <div class="slider__item swiper-slide"
+                             style="background-image: url('{{ asset($post->featured_image) }}');">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-xl-7 col-lg-9 col-md-12">
+                                        <div class="slider__item-content">
+                                            @if($post->categories->isNotEmpty())
+                                                <a href="#" class="category">
+                                                    {{ $post->categories->first()->name }}
                                                 </a>
-                                            </li>
-                                            <li class="slider__meta-item "><a href="author.html" class="slider__meta-link">David Smith</a>
-                                            </li>
-                                            <li class="slider__meta-item">  <span class="dot"></span> February 10, 2024</li>
-                                            <li class="slider__meta-item"> <span class="dot"></span> 15 min Read</li>
-                                            <li class="slider__meta-item"> <span class="dot"></span> 2 comments</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                                            @endif
 
-                     <!--slider3-->
-                     <div class="slider__item  swiper-slide" style="background-image: url(assets/img/blog/9.jpg);">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-xl-7 col-lg-9 col-md-12">
-                                    <div class="slider__item-content ">
-                                        <a href="blog-grid.html" class="category">food</a>
-                                        <h1 class="slider__title">
-                                            <a href="post-default.html" class="slider__title-link">11 Things Every New Nintendo Switch Owner Should Try Or Consider</a>
-                                        </h1>
-
-                                        <p class="slider__exerpt">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Explicabo, harum eligendi. Ab obcaecati ratione facere ut minus illo sequi rerum!</p>
-                                        <ul class="slider__meta list-inline">
-                                            <li class="slider__meta-item">
-                                                <a href="author.html" class="slider__meta-link">
-                                                    <img src="assets/img/author/1.jpg" alt="" class="slider__meta-img">
+                                            <h1 class="slider__title">
+                                                <a href="#" class="slider__title-link">
+                                                    {{ $post->title }}
                                                 </a>
-                                            </li>
-                                            <li class="slider__meta-item "><a href="author.html" class="slider__meta-link">David Smith</a>
-                                            </li>
-                                            <li class="slider__meta-item">  <span class="dot"></span> February 10, 2024</li>
-                                            <li class="slider__meta-item"> <span class="dot"></span> 15 min Read</li>
-                                            <li class="slider__meta-item"> <span class="dot"></span> 2 comments</li>
-                                        </ul>
+                                            </h1>
+
+                                            <p class="slider__exerpt">
+                                                {{ \Illuminate\Support\Str::limit($post->summary, 120) }}
+                                            </p>
+
+                                            <ul class="slider__meta list-inline">
+                                                <li class="slider__meta-item">
+                                                    <a href="#" class="slider__meta-link">
+                                                        <img src="{{ asset('assets/img/author/1.jpg') }}"
+                                                             alt="{{ $post->user->name }}"
+                                                             class="slider__meta-img">
+                                                    </a>
+                                                </li>
+                                                <li class="slider__meta-item">
+                                                    <a href="#" class="slider__meta-link">
+                                                        {{ $post->user->name }}
+                                                    </a>
+                                                </li>
+                                                <li class="slider__meta-item">
+                                                    <span class="dot"></span>
+                                                    {{ $post->published_at->format('F d, Y') }}
+                                                </li>
+                                                <li class="slider__meta-item">
+                                                    <span class="dot"></span>
+                                                    {{ $post->comments_count ?? 0 }} comments
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                     <!--slider4-->
-                     <div class="slider__item  swiper-slide" style="background-image: url(assets/img/blog/15.jpg);">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-xl-7 col-lg-9 col-md-12">
-                                    <div class="slider__item-content ">
-                                        <a href="blog-grid.html" class="category">food</a>
-                                        <h1 class="slider__title">
-                                            <a href="post-default.html" class="slider__title-link">Get the Most Out of Iceland with our 10 Travel Tips</a>
-                                        </h1>
-
-                                        <p class="slider__exerpt">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Explicabo, harum eligendi. Ab obcaecati ratione facere ut minus illo sequi rerum!
-                                        </p>
-
-                                        <ul class="slider__meta list-inline">
-                                            <li class="slider__meta-item">
-                                                <a href="author.html" class="slider__meta-link">
-                                                    <img src="assets/img/author/1.jpg" alt="" class="slider__meta-img">
-                                                </a>
-                                            </li>
-                                            <li class="slider__meta-item "><a href="author.html" class="slider__meta-link">David Smith</a>
-                                            </li>
-                                            <li class="slider__meta-item">  <span class="dot"></span> February 10, 2024</li>
-                                            <li class="slider__meta-item"> <span class="dot"></span> 15 min Read</li>
-                                            <li class="slider__meta-item"> <span class="dot"></span> 2 comments</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
 
-            <div thumbsSlider="" class="swiper slider__bottom container-fluid" >
+            <div thumbsSlider="" class="swiper slider__bottom container-fluid">
                 <div class="swiper-wrapper">
-                    <!--slider1-->
-                    <div class="swiper-slide">
-                        <div class="post-slider">
-                            <img src="assets/img/blog/1.jpg"  alt="" class="post-slider__img">
-                            <div  class="post-slider__content">
-                                <p class="post-slider__title">
-                                    <span>7 Holiday Decor Ideas and Exactly What I Love About Each One </span>
-                                </p>
-                                <ul class="post-slider__meta list-inline" >
-                                    <li  class="post-slider__meta-link"> <i class="bi bi-clock-fill"></i> February 10, 2024</li>
-                                </ul>
+                    @foreach($posts as $post)
+                        <div class="swiper-slide">
+                            <div class="post-slider">
+                                <img src="{{ asset($post->featured_image) }}"
+                                     alt="{{ $post->title }}"
+                                     class="post-slider__img">
+                                <div class="post-slider__content">
+                                    <p class="post-slider__title">
+                                        <span>{{ \Illuminate\Support\Str::limit($post->title, 50) }}</span>
+                                    </p>
+                                    <ul class="post-slider__meta list-inline">
+                                        <li class="post-slider__meta-link">
+                                            <i class="bi bi-clock-fill"></i>
+                                            {{ $post->published_at->format('F d, Y') }}
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
-                    <!--slider2-->
-                    <div class="swiper-slide">
-                        <div class="post-slider">
-                            <img src="assets/img/blog/2.jpg"  alt="" class="post-slider__img">
-                            <div  class="post-slider__content">
-                                <p class="post-slider__title">
-                                    <span>5 Effective Ways I’m Finding Focus in a Busy Season of Life</span>
-                                </p>
-                                <ul class="post-slider__meta list-inline" >
-                                    <li  class="post-slider__meta-link"> <i class="bi bi-clock-fill"></i> February 10, 2024</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--slider3-->
-                    <div class="swiper-slide">
-                        <div class="post-slider">
-                            <img src="assets/img/blog/9.jpg"  alt="" class="post-slider__img">
-                            <div  class="post-slider__content">
-                                <p class="post-slider__title">
-                                    <span>11 Things Every New Nintendo Switch Owner Should Try Or Consider</span>
-                                </p>
-                                <ul class="post-slider__meta list-inline" >
-                                    <li  class="post-slider__meta-link"> <i class="bi bi-clock-fill"></i> February 10, 2024</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!--slider4-->
-                    <div class="swiper-slide">
-                        <div class="post-slider">
-                            <img src="assets/img/blog/15.jpg"  alt="" class="post-slider__img">
-                            <div  class="post-slider__content">
-                                <p class="post-slider__title">
-                                    <span>Get the Most Out of Iceland with our 10 Travel Tips</span>
-                                </p>
-                                <ul class="post-slider__meta list-inline" >
-                                    <li  class="post-slider__meta-link"> <i class="bi bi-clock-fill"></i> February 10, 2024</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>

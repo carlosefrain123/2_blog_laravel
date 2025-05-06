@@ -50,5 +50,7 @@ Noveno comando: Instalar laravel breeze:
 composer require laravel/breeze --dev
 php artisan breeze:install > blade > yes > enter
 
+Decimo comando:
+php artisan vendor:publish --tag=laravel-pagination
 
 

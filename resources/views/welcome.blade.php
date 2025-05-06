@@ -1,8 +1,7 @@
 <!doctype html>
 <html lang="es">
-
 <head>
-    @include('partials.head')
+@include('partials.head')
 </head>
 
 <body>
@@ -79,7 +78,6 @@
             </div>
         </div>
 
-
         <!--blog-Home-2-->
         <section class="mt-90">
             <div class="container-fluid">
@@ -97,7 +95,7 @@
                                     <!-- Categorías -->
                                     <div class="categories">
                                         @foreach ($post->categories as $category)
-                                            <a href="#">{{ $category->name }}</a>
+                                            <a href="#" class="category">{{ $category->name }}</a>
                                         @endforeach
                                     </div>
                                     <h5 class="post-card__title">
@@ -132,34 +130,18 @@
             </div>
         </section>
 
-        <!--/-->
-
         <!--newslettre-->
         @include('partials.newlettre')
     </main>
 
+    <!--footer-->
     @include('partials.footer')
 
     <!--Search-form-->
-    <div class="search__box">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-6 m-auto col-md-8 col-sm-11">
-                    <div class="search__content ">
-                        <button type="button" class="search__box-btn-close">
-                            <i class="bi bi-x-lg"></i>
-                        </button>
-                        <form class="search__form" action="search-page.html">
-                            <input type="search" class="search__form-input" value=""
-                                placeholder="What are you looking for?">
-                            <button type="submit" class="search__form-btn-search">search</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    {{-- @include('partials.buscar') --}}
+
     @include('partials.js')
+
 </body>
 
 </html>

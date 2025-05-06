@@ -56,3 +56,7 @@ php artisan vendor:publish --tag=laravel-pagination
 Oceavo comando:
 php artisan storage:link
 
+Doceavo Comando:
+php artisan migrate:fresh --seed
+
+

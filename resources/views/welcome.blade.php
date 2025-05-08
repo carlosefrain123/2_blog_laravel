@@ -31,7 +31,7 @@
                                                 @endforeach
                                             </div>
                                             <h1 class="slider__title">
-                                                <a href="#" class="slider__title-link">{{ $post->title }}</a>
+                                                <a href="{{ route('posts.show', ['id' => $post->id, 'slug' => $post->slug]) }}" class="slider__title-link">{{ $post->title }}</a>
                                             </h1>
                                             <p class="slider__exerpt">{{ $post->summary }}</p>
                                             <ul class="slider__meta list-inline">
@@ -87,7 +87,7 @@
                         <div class="col-xl-4 col-lg-6 col-md-6">
                             <div class="post-card post-card--default">
                                 <div class="post-card__image">
-                                    <a href="#">
+                                    <a href="{{ route('posts.show', ['id' => $post->id, 'slug' => $post->slug]) }}">
                                         <img src="{{ asset('storage/' . $post->featured_image) }}" alt="{{ $post->title }}">
                                     </a>
                                 </div>
@@ -99,7 +99,7 @@
                                         @endforeach
                                     </div>
                                     <h5 class="post-card__title">
-                                        <a href="#" class="post-card__title-link">{{ $post->title }}</a>
+                                        <a href="{{ route('posts.show', ['id' => $post->id, 'slug' => $post->slug]) }}" class="post-card__title-link">{{ $post->title }}</a>
                                     </h5>
                                     <p class="post-card__exerpt">{{ Str::limit($post->summary, 100) }}</p>
                                     <ul class="post-card__meta list-inline">

@@ -123,5 +123,10 @@ return [
         'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
-
+    
+    'social' => [
+        'facebook' => env('SOCIAL_FACEBOOK', '#'),
+        'instagram' => env('SOCIAL_INSTAGRAM', '#'),
+        'youtube' => env('SOCIAL_YOUTUBE', '#'),
+    ],
 ];

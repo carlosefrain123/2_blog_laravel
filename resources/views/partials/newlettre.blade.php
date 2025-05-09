@@ -9,17 +9,19 @@
                     </div>
                     <ul class="list-inline social-media social-media--layout-three">
                         <li class="social-media__item">
-                            <a href="#" class="social-media__link" ><i class="bi bi-facebook"></i>Facebook</a>
-                        </li>
-
-                        <li class="social-media__item">
-                            <a href="#" class="social-media__link"><i class="bi bi-instagram"></i>Instagram</a>
+                            <a href="{{ config('app.social.facebook') }}" class="social-media__link" target="_blank">
+                                <i class="bi bi-facebook"></i>Facebook
+                            </a>
                         </li>
                         <li class="social-media__item">
-                            <a href="#" class="social-media__link"><i class="bi bi-twitter-x"></i>Twitter</a>
+                            <a href="{{ config('app.social.instagram') }}" class="social-media__link" target="_blank">
+                                <i class="bi bi-instagram"></i>Instagram
+                            </a>
                         </li>
                         <li class="social-media__item">
-                            <a href="#" class="social-media__link"><i class="bi bi-youtube"></i>Youtube</a>
+                            <a href="{{ config('app.social.youtube') }}" class="social-media__link" target="_blank">
+                                <i class="bi bi-youtube"></i>Youtube
+                            </a>
                         </li>
                     </ul>
                 </div>

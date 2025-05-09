@@ -119,35 +119,42 @@
                             <!--widget-author-->
                             <div class="widget">
                                 <div class="widget__author">
+                                    <!-- Imagen del Autor -->
                                     <div class="widget__author-top">
-                                        <a href="author.html" class="widget__author-link">
-                                            <img src="assets/img/author/1.jpg" alt="" class="widget__author-img">
+                                        <a href="#" class="widget__author-link">
+                                            <img src="{{ asset('assets/img/author/admin.png') }}" alt="{{ $post->user->name }}" class="widget__author-img">
                                         </a>
                                     </div>
+                                    <!-- Contenido del Autor -->
                                     <div class="widget__author-content">
-                                        <h6 class="widget__author-name" > Hi, I'm David Smith</h6>
+                                        <h6 class="widget__author-name">Hi, I'm {{ $post->user->name }}</h6>
                                         <p class="widget__author-bio">
-                                            I'm David Smith, husband and father ,
-                                            I love Photography,travel and nature. I'm working as a writer and blogger with experience
-                                            of 5 years until now.
+                                            {{ $post->user->descripcion ?? 'This user has not added a description yet.' }}
                                         </p>
+                                        <!-- Redes Sociales -->
                                         <ul class="list-inline social-media social-media--layout-two">
-                                            <li class="social-media__item">
-                                                <a href="#" class="social-media__link color-facebook" ><i class="bi bi-facebook"></i></a>
-                                            </li>
-
-                                            <li class="social-media__item">
-                                                <a href="#" class="social-media__link color-instagram"><i class="bi bi-instagram"></i></a>
-                                            </li>
-                                            <li class="social-media__item">
-                                                <a href="#" class="social-media__link color-twitter"><i class="bi bi-twitter-x"></i></a>
-                                            </li>
-                                            <li class="social-media__item">
-                                                <a href="#" class="social-media__link color-youtube"><i class="bi bi-youtube"></i></a>
-                                            </li>
+                                            @if ($post->user->urlfacebook)
+                                                <li class="social-media__item">
+                                                    <a href="{{ $post->user->urlfacebook }}" class="social-media__link color-facebook" target="_blank">
+                                                        <i class="bi bi-facebook"></i>
+                                                    </a>
+                                                </li>
+                                            @endif
+                                            @if ($post->user->urlinstagram)
+                                                <li class="social-media__item">
+                                                    <a href="{{ $post->user->urlinstagram }}" class="social-media__link color-instagram" target="_blank">
+                                                        <i class="bi bi-instagram"></i>
+                                                    </a>
+                                                </li>
+                                            @endif
+                                            @if ($post->user->urlyoutube)
+                                                <li class="social-media__item">
+                                                    <a href="{{ $post->user->urlyoutube }}" class="social-media__link color-youtube" target="_blank">
+                                                        <i class="bi bi-youtube"></i>
+                                                    </a>
+                                                </li>
+                                            @endif
                                         </ul>
-
-
                                     </div>
                                 </div>
                             </div>

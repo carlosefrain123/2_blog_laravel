@@ -192,33 +192,12 @@
                             <div class="widget">
                                 <h5 class="widget__title">Categories</h5>
                                 <ul class="widget__categories">
-                                    <li class="widget__categories-item">
-                                        <a href="blog-grid.html" class="category widget__categories-link">Livestyle</a>
-                                        <span class="ml-auto widget__categories-number">22 Posts</span>
-                                    </li>
-                                    <li class="widget__categories-item">
-                                        <a href="blog-grid.html" class="category widget__categories-link">travel</a>
-                                        <span class="ml-auto widget__categories-number">25 Posts</span>
-                                    </li>
-                                    <li class="widget__categories-item">
-                                        <a href="blog-grid.html" class="category widget__categories-link">food</a>
-                                        <span class="ml-auto widget__categories-number">15 Posts</span>
-                                    </li>
-                                    <li class="widget__categories-item">
-                                        <a href="blog-grid.html" class="category widget__categories-link">fashion</a>
-                                        <span class="ml-auto widget__categories-number">18 Posts</span>
-                                    </li>
-                                    <li class="widget__categories-item">
-                                        <a href="blog-grid.html" class="category widget__categories-link">interior</a>
-                                        <span class="ml-auto widget__categories-number">21 Posts</span>
-                                    </li>
-                                    <li class="widget__categories-item">
-                                        <a href="blog-grid.html" class="category widget__categories-link">art & design</a>
-                                        <span class="ml-auto widget__categories-number">14 Posts</span>
-                                    </li>
-
-
-
+                                    @foreach ($categories as $category)
+                                        <li class="widget__categories-item">
+                                            <a href="#" class="category widget__categories-link">{{ $category->name }}</a>
+                                            <span class="ml-auto widget__categories-number">{{ $category->posts->count() }} Posts</span>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
 

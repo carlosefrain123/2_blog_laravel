@@ -62,3 +62,4 @@ php artisan migrate:fresh --seed
 Treceavo comando: Para agregar las redes sociales
 php artisan make:migration add_social_fields_to_users_table --table=users
 php artisan migrate
+php artisan migrate:fresh --seed

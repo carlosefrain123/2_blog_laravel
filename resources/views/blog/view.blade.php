@@ -163,77 +163,28 @@
                             <div class="widget">
                                 <h5 class="widget__title">Latest Posts</h5>
                                 <ul class="widget__latest-posts">
-                                    <!--post 1-->
-                                    <li class="widget__latest-posts__item">
-                                        <div class="widget__latest-posts-image">
-                                            <a href="post-default.html" class="widget__latest-posts-link">
-                                                <img src="assets/img/latest/1.jpg" alt="..." class="widget__latest-posts-img">
-                                            </a>
-                                        </div>
-                                        <div class="widget__latest-posts-count">1</div>
-                                        <div class="widget__latest-posts__content">
-                                            <p class="widget__latest-posts-title">
-                                                <a href="post-default.html" class="widget__latest-posts-link">5 Things I Wish I Knew Before Traveling to Malaysia</a>
-                                            </p>
-                                            <small class="widget__latest-posts-date">
-                                                <i class="bi bi-clock-fill widget__latest-posts-icon"></i>January 15, 2022
-                                            </small>
-                                        </div>
-                                    </li>
-
-                                    <!--post 2-->
-                                    <li class="widget__latest-posts__item">
-                                        <div class="widget__latest-posts-image">
-                                            <a href="post-default.html" class="widget__latest-posts-link">
-                                                <img src="assets/img/latest/2.jpg" alt="..." class="widget__latest-posts-img">
-                                            </a>
-                                        </div>
-                                        <div class="widget__latest-posts-count">2</div>
-                                        <div class="widget__latest-posts__content">
-                                            <p class="widget__latest-posts-title">
-                                                <a href="post-default.html" class="widget__latest-posts-link">Everything you need to know about visiting the Amazon.</a>
-                                            </p>
-                                            <small class="widget__latest-posts-date">
-                                                <i class="bi bi-clock-fill widget__latest-posts-icon"></i>January 15, 2022
-                                            </small>
-                                        </div>
-                                    </li>
-
-                                        <!--post 3-->
-                                    <li class="widget__latest-posts__item">
-                                        <div class="widget__latest-posts-image">
-                                            <a href="post-default.html" class="widget__latest-posts-link">
-                                                <img src="assets/img/latest/3.jpg" alt="..." class="widget__latest-posts-img">
-                                            </a>
-                                        </div>
-                                        <div class="widget__latest-posts-count">3</div>
-                                        <div class="widget__latest-posts__content">
-                                            <p class="widget__latest-posts-title">
-                                                <a href="post-default.html" class="widget__latest-posts-link">How to spend interesting vacation after hard work?</a>
-                                            </p>
-                                            <small class="widget__latest-posts-date">
-                                                <i class="bi bi-clock-fill widget__latest-posts-icon"></i>January 15, 2022
-                                            </small>
-                                        </div>
-                                    </li>
-
-                                    <!--post 4-->
-                                    <li class="widget__latest-posts__item">
-                                        <div class="widget__latest-posts-image">
-                                            <a href="post-default.html" class="widget__latest-posts-link">
-                                                <img src="assets/img/latest/4.jpg" alt="..." class="widget__latest-posts-img">
-                                            </a>
-                                        </div>
-                                        <div class="widget__latest-posts-count">4</div>
-                                        <div class="widget__latest-posts__content">
-                                            <p class="widget__latest-posts-title">
-                                                <a href="post-default.html" class="widget__latest-posts-link">10 Best and Most Beautiful Places to Visit in Italy</a>
-                                            </p>
-                                            <small class="widget__latest-posts-date">
-                                                <i class="bi bi-clock-fill widget__latest-posts-icon"></i>January 15, 2022
-                                            </small>
-                                        </div>
-                                    </li>
+                                    @foreach ($latestPosts as $index => $post)
+                                        <!-- Post {{ $index + 1 }} -->
+                                        <li class="widget__latest-posts__item">
+                                            <div class="widget__latest-posts-image">
+                                                <a href="{{ route('posts.show', ['id' => $post->id, 'slug' => $post->slug]) }}" class="widget__latest-posts-link">
+                                                    <img src="{{ asset('storage/' . $post->featured_image) }}" alt="{{ $post->title }}" class="widget__latest-posts-img">
+                                                </a>
+                                            </div>
+                                            <div class="widget__latest-posts-count">{{ $index + 1 }}</div>
+                                            <div class="widget__latest-posts__content">
+                                                <p class="widget__latest-posts-title">
+                                                    <a href="{{ route('posts.show', ['id' => $post->id, 'slug' => $post->slug]) }}" class="widget__latest-posts-link">
+                                                        {{ $post->title }}
+                                                    </a>
+                                                </p>
+                                                <small class="widget__latest-posts-date">
+                                                    <i class="bi bi-clock-fill widget__latest-posts-icon"></i>
+                                                    {{ $post->published_at->translatedFormat('d \d\e F \d\e Y') }}
+                                                </small>
+                                            </div>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
 

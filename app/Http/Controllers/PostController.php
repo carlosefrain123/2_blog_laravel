@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         // Obtener los últimos 4 posts ordenados por fecha de publicación
         $latestPosts = Post::with(['user', 'categories'])->latest('published_at')->take(4)->get();
 
@@ -18,20 +19,29 @@ class PostController extends Controller
         // Pasar los posts a la vista
         return view('welcome', compact('latestPosts', 'allPosts'));
     }
-    public function show($id, $slug){
+    public function show($id, $slug)
+    {
         // Buscar el post por ID
         $post = Post::with(['user', 'categories'])->findOrFail($id);
 
         $latestPosts = Post::latest('published_at')->take(value: 4)->get();
 
         $categories = Category::with('posts')->get();
+        // Obtener el post anterior
+        $previousPost = Post::where('id', '<', $post->id)
+            ->orderBy('id', 'desc')
+            ->first();
 
+        // Obtener el siguiente post
+        $nextPost = Post::where('id', '>', $post->id)
+            ->orderBy('id', 'asc')
+            ->first();
         // Verificar que el slug en la URL coincida con el slug del post
         if ($post->slug !== $slug) {
             abort(404); // Mostrar error 404 si no coincide
         }
 
         // Retornar la vista con los datos del post
-        return view('blog.view', compact('post','latestPosts','categories'));
+        return view('blog.view', compact('post','latestPosts','categories','previousPost','nextPost'));
     }
 }

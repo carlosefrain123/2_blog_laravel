@@ -72,44 +72,51 @@
 
                             <!--Related-posts-->
                             <div class="row">
-                                <div class="col-md-6">
-                                    <div class="widget">
-                                        <div class="widget__related-post">
-                                            <div class="widget__related-post__image">
-                                                <a href="post-default.html">
-                                                    <img src="assets/img/latest/1.jpg" alt="..." class="widget__related-post__img">
-                                                </a>
-                                            </div>
-                                            <div class="widget__related-post__content">
-                                                <a class="btn-link" href="post-default.html">
-                                                    <i class="bi bi-arrow-left"></i>Preview post
-                                                </a>
-                                                <p class="widget__related-post__title">
-                                                    <a href="post-default.html" class="widget__related-post__link">5 Things I Wish I Knew Before Traveling to Malaysia</a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="widget">
-                                        <div class="widget__related-post">
-                                            <div class="widget__related-post__image">
-                                                <a href="post-default.html">
-                                                    <img src="assets/img/latest/2.jpg" alt="..." class="widget__related-post__img">
-                                                </a>
-                                            </div>
-                                            <div class="widget__related-post__content">
-                                                <a class="btn-link" href="post-default.html">
-                                                    Next post <i class="bi bi-arrow-right"></i>
-                                                </a>
-                                                <p class="widget__related-post__title">
-                                                    <a href="post-default.html" class="widget__related-post__link">5 Things I Wish I Knew Before Traveling to Malaysia</a>
-                                                </p>
+                                <!-- Post Anterior -->
+                                @if ($previousPost)
+                                    <div class="col-md-6">
+                                        <div class="widget">
+                                            <div class="widget__related-post">
+                                                <div class="widget__related-post__image">
+                                                    <a href="{{ route('posts.show', ['id' => $previousPost->id, 'slug' => $previousPost->slug]) }}">
+                                                        <img src="{{ asset('storage/' . $previousPost->featured_image) }}" alt="{{ $previousPost->title }}" class="widget__related-post__img">
+                                                    </a>
+                                                </div>
+                                                <div class="widget__related-post__content">
+                                                    <a class="btn-link" href="{{ route('posts.show', ['id' => $previousPost->id, 'slug' => $previousPost->slug]) }}">
+                                                        <i class="bi bi-arrow-left"></i> Previous Post
+                                                    </a>
+                                                    <p class="widget__related-post__title">
+                                                        <a href="{{ route('posts.show', ['id' => $previousPost->id, 'slug' => $previousPost->slug]) }}" class="widget__related-post__link">{{ $previousPost->title }}</a>
+                                                    </p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                @endif
+
+                                <!-- Siguiente Post -->
+                                @if ($nextPost)
+                                    <div class="col-md-6">
+                                        <div class="widget">
+                                            <div class="widget__related-post">
+                                                <div class="widget__related-post__image">
+                                                    <a href="{{ route('posts.show', ['id' => $nextPost->id, 'slug' => $nextPost->slug]) }}">
+                                                        <img src="{{ asset('storage/' . $nextPost->featured_image) }}" alt="{{ $nextPost->title }}" class="widget__related-post__img">
+                                                    </a>
+                                                </div>
+                                                <div class="widget__related-post__content">
+                                                    <a class="btn-link" href="{{ route('posts.show', ['id' => $nextPost->id, 'slug' => $nextPost->slug]) }}">
+                                                        Next Post <i class="bi bi-arrow-right"></i>
+                                                    </a>
+                                                    <p class="widget__related-post__title">
+                                                        <a href="{{ route('posts.show', ['id' => $nextPost->id, 'slug' => $nextPost->slug]) }}" class="widget__related-post__link">{{ $nextPost->title }}</a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>

@@ -226,42 +226,11 @@
                             <div class="widget">
                                 <h5 class="widget__title">Tags</h5>
                                 <ul class="list-inline widget__tags">
-                                    <li class="widget__tags-item">
-                                        <a href="blog-grid.html" class="widget__tags-link">Travel</a>
-                                    </li>
-                                    <li class="widget__tags-item">
-                                        <a href="blog-grid.html" class="widget__tags-link">nature</a>
-                                    </li>
-                                    <li class="widget__tags-item">
-                                        <a href="blog-grid.html" class="widget__tags-link">tips</a>
-                                    </li>
-                                    <li class="widget__tags-item">
-                                        <a href="blog-grid.html" class="widget__tags-link">forest</a>
-                                    </li>
-                                    <li class="widget__tags-item">
-                                        <a href="blog-grid.html" class="widget__tags-link">Torism</a>
-                                    </li>
-                                    <li class="widget__tags-item">
-                                        <a href="blog-grid.html" class="widget__tags-link">fashion</a>
-                                    </li>
-                                    <li class="widget__tags-item">
-                                        <a href="blog-grid.html" class="widget__tags-link">livestyle</a>
-                                    </li>
-                                    <li class="widget__tags-item">
-                                        <a href="blog-grid.html" class="widget__tags-link">health</a>
-                                    </li>
-                                    <li class="widget__tags-item">
-                                        <a href="blog-grid.html" class="widget__tags-link">food</a>
-                                    </li>
-                                    <li class="widget__tags-item">
-                                        <a href="blog-grid.html" class="widget__tags-link">breakfast</a>
-                                    </li>
-                                    <li class="widget__tags-item">
-                                        <a href="blog-grid.html" class="widget__tags-link">hacks</a>
-                                    </li>
-                                    <li class="widget__tags-item">
-                                        <a href="blog-grid.html" class="widget__tags-link">interior</a>
-                                    </li>
+                                    @foreach ($post->tags as $tag)
+                                        <li class="widget__tags-item">
+                                            <a href="#" class="widget__tags-link">{{ $tag->name }}</a>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </div>
 

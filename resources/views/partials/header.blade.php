@@ -1,15 +1,17 @@
 <header class="header fixed-top navbar-expand-xl">
     <div class="container-fluid">
         <div class="header__main">
-            <!-- Logo -->
+            <!-- logo -->
             <div class="logo">
+                <!-- Logo Oscuro -->
                 <a class="logo__link logo--dark" href="{{ url('/') }}">
-                    <img src="{{ asset('assets/img/logo/logo-dark.png') }}" alt="" class="logo__img">
+                    <span class="logo__text logo--dark-text">AnderCode</span>
                 </a>
+                <!-- Logo Claro -->
                 <a class="logo__link logo--light" href="{{ url('/') }}">
-                    <img src="{{ asset('assets/img/logo/logo-white.png') }}" alt="" class="logo__img">
+                    <span class="logo__text logo--light-text">AnderCode</span>
                 </a>
-            </div><!--/-->
+            </div>
             <div class="header__navbar">
                 <nav class="navbar">
                     <!--navbar-collapse-->

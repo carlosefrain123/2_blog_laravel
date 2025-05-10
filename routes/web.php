@@ -12,6 +12,10 @@ Route::get('/', action: [PostController::class, 'index'])->name('home');
 
 Route::get('/{id}/{slug}', [PostController::class, 'show'])->name('posts.show');
 
+Route::get('/contact', function () {
+    return view('contact.index');
+})->name('contact.index');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

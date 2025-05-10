@@ -89,21 +89,19 @@
                 <!--header-social-->
                 <ul class="list-inline social-media social-media--layout-one">
                     <li class="social-media__item">
-                        <a href="#" class="social-media__link">
+                        <a href="{{ config('app.social.facebook') }}" class="social-media__link" target="_blank">
                             <i class="bi bi-facebook"></i>
                         </a>
                     </li>
-
                     <li class="social-media__item">
-                        <a href="#" class="social-media__link">
+                        <a href="{{ config('app.social.instagram') }}" class="social-media__link" target="_blank">
                             <i class="bi bi-instagram"></i>
                         </a>
                     </li>
                     <li class="social-media__item">
-                        <a href="#" class="social-media__link"><i class="bi bi-twitter-x"></i></a>
-                    </li>
-                    <li class="social-media__item">
-                        <a href="#" class="social-media__link"><i class="bi bi-youtube"></i></a>
+                        <a href="{{ config('app.social.youtube') }}" class="social-media__link" target="_blank">
+                            <i class="bi bi-youtube"></i>
+                        </a>
                     </li>
                 </ul>
 

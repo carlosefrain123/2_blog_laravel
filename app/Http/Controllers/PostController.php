@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -87,5 +88,11 @@ class PostController extends Controller
 
         // Retornar la vista
         return view('blog.index', compact('allPosts', 'categories', 'latestPosts', 'tags', 'category', 'tag', 'search'));
+    }
+    public function list(){
+        // Obtener los posts del usuario autenticado
+        $posts = Post::where('user_id', Auth::id())->latest()->paginate(10);
+
+        return view('blog.list', compact('posts'));
     }
 }

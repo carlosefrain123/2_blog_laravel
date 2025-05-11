@@ -8,6 +8,9 @@ use App\Http\Controllers\PostController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::middleware(['auth'])->group(function () {
+    Route::get('/blog/list', [PostController::class, 'list'])->name('posts.list');
+});
 Route::get('/', action: [PostController::class, 'index'])->name('home');
 
 Route::get('/{id}/{slug}', [PostController::class, 'show'])->name('posts.show');

@@ -241,6 +241,8 @@
 
     <!--footer-->
     @include('partials.footer')
+    <!--Search-form-->
+    @include('partials.buscar')
     <!--plugins -->
     @include('partials.js')
 

@@ -1,111 +1,48 @@
-<!doctype html>
-<html lang="es">
+@extends('layouts.base')
 
-<head>
-    @include('partials.head')
-</head>
+@section('title', 'Blog - Andercode')
 
-<body>
-
-    <!--loading -->
-    @include('partials.loading')
-
-    <!-- Header -->
-    @include('partials.header')
-
-    <main class="main ">
-        <!--about-us-->
-        <section class="m-top mb-10">
-            <div class="container-fluid">
-                <div class="row ">
-                    <div class="col-xl-9 m-auto">
-                        <div class="about-us">
-                            <div class="about-us__image">
-                                <img src="assets/img/pic/about-us.jpg" alt="" class="about-us__img">
-                            </div>
-                            <div class="about-us__description">
-                                <p class="about-us__description-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus facere, nemo dignissimos, in labore nostrum provident
-                                    perferendis minima accusamus aliquam reprehenderit autem
-                                </p>
-                                <p class="about-us__description-text">
-                                    praesentium sunt beatae libero non totam.Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus facere, nemo dignissimos, in labore nostrum provident
-                                    perferendis minima accusamus aliquam reprehenderit autem praesentium sunt beatae libero non totam.
-                                </p>
-                                <p class="about-us__description-text">
-                                    praesentium sunt beatae libero non totam.Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus facere, nemo dignissimos, in labore nostrum provident
-                                    perferendis minima accusamus aliquam reprehenderit autem praesentium sunt beatae libero non totam.
-                                </p>
-                                <div class="about-us__qoute">
-                                    <i class="bi bi-quote about-us__qoute-icon"></i>
-
-                                    <h3 class="about-us__qoute-item">
-                                        "My website’s kind of fun for me. I get to do drawings on that.
-                                        It’s kind of fun.”
-                                    </h3>
-                                    <small class="about-us__qoute-author">Jeff Bridges.</small>
-                                </div>
-                            <p class="about-us__description-text">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur malesuada malesuada metus ut placerat. Cras a porttitor
-                                quam, eget ornare sapien. In sit amet vulputate metus. Nullam eget rutrum nisl. Sed tincidunt lorem sed maximus interdum.
-                                Interdum malesuada fames ante ipsum primis in faucibus. Aenean scelerisque efficitur mauris nec tincidunt. cursus leo ultricies
-                                magna faucibus id.
-                            </p>
-                            <p class="about-us__description-text">
-                                praesentium sunt beatae libero non totam.Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus facere, nemo dignissimos, in labore nostrum provident
-                                perferendis minima accusamus aliquam reprehenderit autem praesentium sunt beatae libero non totam.
-                            </p>
-                            </div>
+@section('content')
+    <section class="m-top mb-10">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-9 m-auto">
+                    <div class="about-us">
+                        <!-- Imagen de "Acerca de" -->
+                        <div class="about-us__image">
+                            <img src="{{ asset('assets/img/pic/about-us.jpg') }}" alt="Acerca de AnderCode" class="about-us__img">
                         </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!--newslettre-->
-        <section class="newslettre__section">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-lg-6 col-md-10 col-sm-11 m-auto">
-                        <div class="newslettre">
-                            <div class="newslettre__info ">
-                                <h3 class="newslettre__title">Get The Best Blog Stories into Your inbox!</h3>
-                                <p class="newslettre__desc"> Sign up for free and be the first to get notified about new posts. </p>
+                        <!-- Descripción de AnderCode -->
+                        <div class="about-us__description">
+                            <p class="about-us__description-text">
+                                Bienvenido a AnderCode, un espacio dedicado a la enseñanza y creación de soluciones tecnológicas innovadoras. Nos especializamos en desarrollo web, aplicaciones móviles y formación en tecnologías modernas.
+                            </p>
+                            <p class="about-us__description-text">
+                                Nuestro objetivo es democratizar el conocimiento y capacitar a la próxima generación de desarrolladores con herramientas prácticas y útiles para el mundo laboral actual. En AnderCode, creemos que el aprendizaje puede ser divertido, accesible y significativo.
+                            </p>
+                            <p class="about-us__description-text">
+                                Desde la creación de cursos personalizados hasta el diseño de proyectos reales, estamos comprometidos en ayudarte a alcanzar tus metas tecnológicas. Acompáñanos y forma parte de una comunidad apasionada por la innovación y el desarrollo.
+                            </p>
+                            <!-- Cita Inspiradora -->
+                            <div class="about-us__qoute">
+                                <i class="bi bi-quote about-us__qoute-icon"></i>
+                                <h3 class="about-us__qoute-item">
+                                    "La tecnología es una herramienta para cambiar el mundo, pero también para cambiar vidas. Creemos en su potencial para democratizar oportunidades."
+                                </h3>
+                                <small class="about-us__qoute-author">AnderCode Team</small>
                             </div>
-
-                            <form action="#" class="newslettre__form">
-                                <input type="email" class="newslettre__form-input form-control" placeholder="Your email adress" required="required">
-                                <button class="newslettre__form-submit" type="submit">Subscribe</button>
-                            </form>
-
-                            <ul class="list-inline social-media social-media--layout-three">
-                                <li class="social-media__item">
-                                    <a href="#" class="social-media__link" ><i class="bi bi-facebook"></i>Facebook</a>
-                                </li>
-
-                                <li class="social-media__item">
-                                    <a href="#" class="social-media__link"><i class="bi bi-instagram"></i>Instagram</a>
-                                </li>
-                                <li class="social-media__item">
-                                    <a href="#" class="social-media__link"><i class="bi bi-twitter-x"></i>Twitter</a>
-                                </li>
-                                <li class="social-media__item">
-                                    <a href="#" class="social-media__link"><i class="bi bi-youtube"></i>Youtube</a>
-                                </li>
-                            </ul>
+                            <p class="about-us__description-text">
+                                Con sede en Lima, Perú, estamos dedicados a ofrecer contenido de calidad en español, adaptado a las necesidades de nuestros estudiantes y clientes. Nuestro enfoque es práctico y orientado a resultados, para que siempre estés un paso adelante en el mundo de la tecnología.
+                            </p>
+                            <p class="about-us__description-text">
+                                Gracias por visitarnos y por confiar en AnderCode como tu aliado en el aprendizaje y la innovación tecnológica.
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
-    <!--footer-->
-    @include('partials.footer')
-    <!--Search-form-->
-    @include('partials.buscar')
-    <!--plugins -->
-    @include('partials.js')
-
-</body>
-</html>
+    @include('partials.newlettre')
+@endsection

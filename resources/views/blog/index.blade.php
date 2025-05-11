@@ -20,6 +20,12 @@
                 <div class="row">
                     <div class="col-lg-8">
 
+                        @if ($search)
+                            <div class="alert alert-info">
+                                Resultados para: <strong>{{ $search }}</strong>
+                            </div>
+                        @endif
+
                         @if (isset($category))
                             <div class="alert alert-info">
                                 Mostrando posts en la categoría: <strong>{{ $category->name }}</strong>
@@ -66,9 +72,9 @@
                                                 </a>
                                             </div>
                                             <div class="post-card__content">
-
+                                                {{-- Al dar click en una categoria, se dirige a varias categorias --}}
                                                 @foreach ($post->categories as $category)
-                                                    <a href="#" class="category">{{ $category->name }}</a>
+                                                    <a href="{{ route('posts.category', $category->slug) }}" class="category">{{ $category->name }}</a>
                                                 @endforeach
 
                                                 <h5 class="post-card__title">
@@ -144,7 +150,7 @@
                                 <ul class="widget__categories">
                                     @foreach ($categories as $category)
                                         <li class="widget__categories-item">
-                                            <a href="#" class="category widget__categories-link">{{ $category->name }}</a>
+                                            <a href="{{ route('posts.category', $category->slug) }}" class="category widget__categories-link">{{ $category->name }}</a>
                                             <span class="ml-auto widget__categories-number">{{ $category->posts->count() }} Posts</span>
                                         </li>
                                     @endforeach
@@ -157,7 +163,7 @@
                                 <ul class="list-inline widget__tags">
                                     @foreach ($tags as $tag)
                                         <li class="widget__tags-item">
-                                            <a href="#" class="widget__tags-link">{{ $tag->name }}</a>
+                                            <a href="{{ route('posts.tag', $tag->slug) }}" class="widget__tags-link">{{ $tag->name }}</a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -188,10 +194,10 @@
 
     <!--Search-form-->
     @include('partials.buscar')
-    
+
     <!--plugins -->
     @include('partials.js')
 
 </body>
-
 </html>
+

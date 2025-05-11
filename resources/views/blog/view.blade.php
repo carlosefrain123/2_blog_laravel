@@ -14,7 +14,7 @@
     @include('partials.header')
 
     <main class="main">
-        <!--post-default-->
+
         <section class="mt-130 mb-30">
             <div class="container-fluid">
                 <div class="row">
@@ -31,7 +31,7 @@
                                 <div class="post-single__content">
                                     <!-- Categorías -->
                                     @foreach ($post->categories as $category)
-                                        <a href="#" class="category">{{ $category->name }}</a>
+                                        <a href="{{ route('posts.category', $category->slug) }}" class="category">{{ $category->name }}</a>
                                     @endforeach
 
                                     <!-- Título del Post -->
@@ -63,7 +63,7 @@
                                     <ul class="list-inline widget__tags">
                                         @foreach ($post->tags as $tag)
                                             <li class="widget__tags-item">
-                                                <a href="#" class="widget__tags-link">{{ $tag->name }}</a>
+                                                <a href="{{ route('posts.tag', $tag->slug) }}" class="widget__tags-link">{{ $tag->name }}</a>
                                             </li>
                                         @endforeach
                                     </ul>
@@ -118,6 +118,8 @@
                                     </div>
                                 @endif
                             </div>
+
+
                         </div>
                     </div>
 
@@ -201,7 +203,7 @@
                                 <ul class="widget__categories">
                                     @foreach ($categories as $category)
                                         <li class="widget__categories-item">
-                                            <a href="#" class="category widget__categories-link">{{ $category->name }}</a>
+                                            <a href="{{ route('posts.category', $category->slug) }}" class="category widget__categories-link">{{ $category->name }}</a>
                                             <span class="ml-auto widget__categories-number">{{ $category->posts->count() }} Posts</span>
                                         </li>
                                     @endforeach
@@ -214,7 +216,7 @@
                                 <ul class="list-inline widget__tags">
                                     @foreach ($post->tags as $tag)
                                         <li class="widget__tags-item">
-                                            <a href="#" class="widget__tags-link">{{ $tag->name }}</a>
+                                            <a href="{{ route('posts.tag', $tag->slug) }}" class="widget__tags-link">{{ $tag->name }}</a>
                                         </li>
                                     @endforeach
                                 </ul>
@@ -233,7 +235,7 @@
                     </div>
                 </div>
             </div>
-        </section><!--/-->
+        </section>
 
         <!--newslettre-->
         @include('partials.newlettre')
@@ -241,8 +243,10 @@
 
     <!--footer-->
     @include('partials.footer')
+
     <!--Search-form-->
     @include('partials.buscar')
+
     <!--plugins -->
     @include('partials.js')
 

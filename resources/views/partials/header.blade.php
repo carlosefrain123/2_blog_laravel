@@ -24,7 +24,7 @@
 
                             <!--Posts features -->
                             <li class="nav-item dropdown">
-                                <a class="nav-link" href="javascript:void(0)">Blogs</a>
+                                <a class="nav-link" href="{{ route('blog.index') }}">Blogs</a>
                             </li>
 
                             <!--Contact-->

@@ -1,48 +1,58 @@
 <header class="header fixed-top navbar-expand-xl">
     <div class="container-fluid">
         <div class="header__main">
-            <!-- logo -->
             <div class="logo">
-                <!-- Logo Oscuro -->
                 <a class="logo__link logo--dark" href="{{ url('/') }}">
                     <span class="logo__text logo--dark-text">AnderCode</span>
                 </a>
-                <!-- Logo Claro -->
                 <a class="logo__link logo--light" href="{{ url('/') }}">
                     <span class="logo__text logo--light-text">AnderCode</span>
                 </a>
             </div>
+
             <div class="header__navbar">
                 <nav class="navbar">
-                    <!--navbar-collapse-->
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ">
-                            <!--Homes -->
-                            <li class="nav-item dropdown">
-                                <a class="nav-link" href="{{ url('/') }}">Home</a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/') }}"> Inicio </a>
                             </li>
 
-                            <!--Posts features -->
-                            <li class="nav-item dropdown">
-                                <a class="nav-link" href="{{ route('blog.index') }}">Blogs</a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('blog.index') }}"> Blogs </a>
                             </li>
 
-                            <!--Contact-->
-                            <li class="nav-item dropdown">
-                                <a class="nav-link" href="{{ route('contact.index') }}">Contacto</a>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('contact.index') }}"> Contacto </a>
                             </li>
 
-                            <!--Pages-->
-                            <li class="nav-item dropdown">
-                                <a class="nav-link" href="{{ route('login') }}">Acceder</a>
-                            </li>
+                            @if (Auth::check())
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false"> {{ auth()->user()->name }} </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="{{ route('posts.list') }}">Mis Publicaciones</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('profile.edit') }}">Perfil</a></li>
+                                        <li>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                @csrf
+                                            </form>
+                                            <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                                Cerrar Sesión
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            @else
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('login') }}"> Acceder </a>
+                                </li>
+                            @endif
+
                         </ul>
                     </div>
-                    <!--/-->
                 </nav>
             </div>
 
-            <!-- header actions -->
             <div class=" header__action-items">
                 <!--header-social-->
                 <ul class="list-inline social-media social-media--layout-one">
@@ -82,9 +92,7 @@
                 </div>
 
                 <!--navbar-toggler-->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler__icon"></span>
                 </button>
             </div>

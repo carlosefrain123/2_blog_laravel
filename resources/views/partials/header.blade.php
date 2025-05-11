@@ -34,7 +34,7 @@
 
                             <!--Pages-->
                             <li class="nav-item dropdown">
-                                <a class="nav-link" href="javascript:void(0)">Acceder</a>
+                                <a class="nav-link" href="{{ route('login') }}">Acceder</a>
                             </li>
                         </ul>
                     </div>

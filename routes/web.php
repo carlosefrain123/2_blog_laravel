@@ -16,6 +16,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/blog/{id}/edit', [PostController::class, 'edit'])->name('posts.edit');
     Route::put('/blog/{id}/update', [PostController::class, 'update'])->name('posts.update');
+
+    Route::delete('/blog/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
 });
 Route::get('/', action: [PostController::class, 'index'])->name('home');
 

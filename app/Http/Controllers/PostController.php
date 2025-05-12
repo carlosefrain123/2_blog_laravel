@@ -8,6 +8,8 @@ use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+
 
 class PostController extends Controller
 {
@@ -200,5 +202,19 @@ class PostController extends Controller
 
         // Redireccionar con mensaje de éxito
         return redirect()->route('posts.list')->with('success', '¡Post actualizado exitosamente!');
+    }
+    public function destroy($id){
+        // Encontrar el post y verificar que pertenezca al usuario autenticado
+        $post = Post::where('id', $id)->where('user_id', Auth::id())->firstOrFail();
+
+        // Eliminar la imagen si existe
+        if ($post->featured_image) {
+            Storage::delete('public/' . $post->featured_image);
+        }
+
+        // Eliminar el post de la base de datos
+        $post->delete();
+
+        return redirect()->route('posts.list')->with('success', '¡Post eliminado exitosamente!');
     }
 }

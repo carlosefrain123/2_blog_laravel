@@ -19,7 +19,7 @@
 
     @include('partials.js')
 
-    {{-- @stack('scripts') --}}
+    @stack('scripts')
 
 </body>
 

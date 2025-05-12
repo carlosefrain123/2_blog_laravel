@@ -146,4 +146,59 @@ class PostController extends Controller
         // Redireccionar con mensaje de éxito
         return redirect()->route('posts.list')->with('success', '¡Post creado exitosamente!');
     }
+    public function edit($id){
+        // Buscar el post por su ID y asegurar que pertenece al usuario autenticado
+        $post = Post::where('id', $id)->where('user_id', Auth::id())->firstOrFail();
+
+        // Obtener todas las categorías y etiquetas para la selección
+        $categories = Category::all();
+        $tags = Tag::all();
+
+        return view('blog.edit', compact('post', 'categories', 'tags'));
+    }
+    public function update(Request $request, $id){
+        // Validar los datos del formulario
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'summary' => 'required|string|max:500',
+            'content' => 'required|string',
+            'category_id' => 'required|exists:categories,id',
+            'tags' => 'array',
+            'tags.*' => 'exists:tags,id',
+            'featured_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'status' => 'required|in:draft,published',
+        ]);
+
+        // Encontrar el post a editar y verificar la propiedad del usuario autenticado
+        $post = Post::where('id', $id)->where('user_id', Auth::id())->firstOrFail();
+
+        // Procesar la imagen si se ha subido una nueva
+        if ($request->hasFile('featured_image')) {
+            $imagePath = $request->file('featured_image')->store('blog', 'public');
+            $post->featured_image = $imagePath;
+        }
+
+        // Actualizar los campos del post
+        $post->update([
+            'title' => $request->title,
+            'slug' => Str::slug($request->title),
+            'summary' => $request->summary,
+            'content' => $request->content,
+            'status' => $request->status,
+            'published_at' => $request->status === 'published' ? now() : null,
+        ]);
+
+        // Actualizar la categoría
+        $post->categories()->sync([$request->category_id]);
+
+        // Actualizar las etiquetas seleccionadas
+        if ($request->has('tags')) {
+            $post->tags()->sync($request->tags);
+        } else {
+            $post->tags()->detach();
+        }
+
+        // Redireccionar con mensaje de éxito
+        return redirect()->route('posts.list')->with('success', '¡Post actualizado exitosamente!');
+    }
 }

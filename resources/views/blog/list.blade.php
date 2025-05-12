@@ -44,7 +44,7 @@
                                             </td>
                                             <td>
                                                 <a href="{{ route('posts.show', ['id' => $post->id, 'slug' => $post->slug]) }}" class="btn btn-info btn-sm"><i class="bi bi-eye"></i></a>
-                                                <a href="#" class="btn btn-warning btn-sm">
+                                                <a href="{{ route('posts.edit', $post->id) }}" class="btn btn-warning btn-sm">
                                                     <i class="bi bi-pen"></i>
                                                 </a>
                                                 <form action="#" method="POST" class="d-inline delete-form">

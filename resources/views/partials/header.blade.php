@@ -31,7 +31,7 @@
                                     <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false"> {{ auth()->user()->name }} </a>
                                     <ul class="dropdown-menu">
                                         <li><a class="dropdown-item" href="{{ route('posts.list') }}">Mis Publicaciones</a></li>
-                                        <li><a class="dropdown-item" href="#}">Perfil</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('profile.edit') }}">Perfil</a></li>
                                         <li>
                                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                                 @csrf

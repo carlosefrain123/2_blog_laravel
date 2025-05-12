@@ -43,7 +43,7 @@
                                             <td>{{ $post->published_at ? $post->published_at->format('d/m/Y') : 'No publicado' }}
                                             </td>
                                             <td>
-                                                <a href="#" class="btn btn-info btn-sm"><i class="bi bi-eye"></i></a>
+                                                <a href="{{ route('posts.show', ['id' => $post->id, 'slug' => $post->slug]) }}" class="btn btn-info btn-sm"><i class="bi bi-eye"></i></a>
                                                 <a href="#" class="btn btn-warning btn-sm">
                                                     <i class="bi bi-pen"></i>
                                                 </a>

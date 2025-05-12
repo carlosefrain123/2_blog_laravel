@@ -8,16 +8,16 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="banner__content">
-
-                        @if(session('success'))
+                        {{-- Alerta que se creo,edito y elimino --}}
+                        @if (session('success'))
                             <div class="alert alert-success">
                                 {{ session('success') }}
                             </div>
                         @endif
-
                         <h3>Mis Publicaciones</h3>
-                        <br/>
-                        <br/>
+                        <a href="{{ route('posts.create') }}" class="btn btn-primary mt-3">Crear Nuevo Blog</a>
+                        <br />
+                        <br />
                         @if ($posts->count() > 0)
                             <table class="table table-striped">
                                 <thead>
@@ -35,11 +35,13 @@
                                             <td>{{ $post->title }}</td>
                                             <td>{{ Str::limit($post->summary, 50) }}</td>
                                             <td>
-                                                <span class="badge bg-{{ $post->status == 'published' ? 'success' : 'warning' }}">
+                                                <span
+                                                    class="badge bg-{{ $post->status == 'published' ? 'success' : 'warning' }}">
                                                     {{ ucfirst($post->status) }}
                                                 </span>
                                             </td>
-                                            <td>{{ $post->published_at ? $post->published_at->format('d/m/Y') : 'No publicado' }}</td>
+                                            <td>{{ $post->published_at ? $post->published_at->format('d/m/Y') : 'No publicado' }}
+                                            </td>
                                             <td>
                                                 <a href="#" class="btn btn-info btn-sm"><i class="bi bi-eye"></i></a>
                                                 <a href="#" class="btn btn-warning btn-sm">
@@ -63,6 +65,7 @@
                                     {{ $posts->links('pagination::bootstrap-4') }}
                                 </div>
                             </div>
+                            {{--  TODO: Es la paginación, es decir las flechitas de desplazamieto de izquierda y derecha --}}
                         @else
                             <p class="text-center">Aún no has publicado nada.</p>
                         @endif

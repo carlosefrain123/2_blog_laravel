@@ -10,6 +10,8 @@ Route::get('/', function () {
 });
 Route::middleware(['auth'])->group(function () {
     Route::get('/blog/list', [PostController::class, 'list'])->name('posts.list');
+    Route::get('/blog/create', [PostController::class, 'create'])->name('posts.create');
+    Route::post('/blog/store', [PostController::class, 'store'])->name('posts.store');
 });
 Route::get('/', action: [PostController::class, 'index'])->name('home');
 
@@ -32,4 +34,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

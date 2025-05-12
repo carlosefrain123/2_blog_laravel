@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
@@ -94,5 +95,55 @@ class PostController extends Controller
         $posts = Post::where('user_id', Auth::id())->latest()->paginate(10);
 
         return view('blog.list', compact('posts'));
+    }
+    public function create(){
+        // Obtener todas las categorías y tags disponibles para la selección
+        $categories = Category::all();
+        $tags = Tag::all();
+
+        return view('blog.create', compact('categories', 'tags'));
+    }
+    public function store(Request $request){
+        // Validar los datos del formulario
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'summary' => 'required|string|max:500',
+            'content' => 'required|string',
+            'category_id' => 'required|exists:categories,id',
+            'tags' => 'array',
+            'tags.*' => 'exists:tags,id',
+            'featured_image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'status' => 'required|in:draft,published',
+        ]);
+
+        // Procesar la imagen si se ha subido
+        $imagePath = null;
+        if ($request->hasFile('featured_image')) {
+            // Guardar la imagen en la carpeta public/blog y obtener la ruta relativa
+            $imagePath = $request->file('featured_image')->store('blog', 'public');
+        }
+
+        // Crear el nuevo post
+        $post = Post::create([
+            'user_id' => Auth::id(),
+            'title' => $request->title,
+            'slug' => Str::slug($request->title),
+            'summary' => $request->summary,
+            'content' => $request->content,
+            'featured_image' => $imagePath,
+            'status' => $request->status,
+            'published_at' => $request->status === 'published' ? now() : null,
+        ]);
+
+        // Asociar el post con la categoría seleccionada
+        $post->categories()->attach($request->category_id);
+
+        // Asociar los tags seleccionados
+        if ($request->has('tags')) {
+            $post->tags()->attach($request->tags);
+        }
+
+        // Redireccionar con mensaje de éxito
+        return redirect()->route('posts.list')->with('success', '¡Post creado exitosamente!');
     }
 }
